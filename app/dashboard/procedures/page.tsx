@@ -419,255 +419,262 @@ const procedures = [
     title: "Drupal Core Update Procedure",
     description: "Step-by-step guide for updating Drupal core",
     icon: <RefreshCw className="h-5 w-5 text-blue-500" />,
-    fullDescription: "This procedure outlines the recommended steps for safely updating Drupal core across your environments. Following this procedure minimizes downtime and reduces the risk of update-related issues.",
+    fullDescription:
+      "This procedure outlines the recommended steps for safely updating Drupal core across your environments. Following this procedure minimizes downtime and reduces the risk of update-related issues.",
     steps: [
       {
         title: "Preparation",
-        description: "Create a full backup of your database and codebase before proceeding with any updates."
+        description: "Create a full backup of your database and codebase before proceeding with any updates.",
       },
       {
         title: "Development Environment",
-        description: "Apply the update to your development environment first and test thoroughly."
+        description: "Apply the update to your development environment first and test thoroughly.",
       },
       {
         title: "Staging Environment",
-        description: "Once verified in development, apply the update to staging and perform user acceptance testing."
+        description: "Once verified in development, apply the update to staging and perform user acceptance testing.",
       },
       {
         title: "Schedule Maintenance Window",
-        description: "Schedule a maintenance window for production updates, preferably during low-traffic periods."
+        description: "Schedule a maintenance window for production updates, preferably during low-traffic periods.",
       },
       {
         title: "Production Update",
-        description: "Apply the update to production during the maintenance window, with monitoring in place."
+        description: "Apply the update to production during the maintenance window, with monitoring in place.",
       },
       {
         title: "Verification",
-        description: "Verify all functionality is working correctly after the update is complete."
+        description: "Verify all functionality is working correctly after the update is complete.",
       },
       {
         title: "Documentation",
-        description: "Document any issues encountered and their resolutions for future reference."
-      }
+        description: "Document any issues encountered and their resolutions for future reference.",
+      },
     ],
     notes: [
       "Always check the release notes for breaking changes before updating.",
       "Consider using the Update Manager in the dashboard for a streamlined process.",
-      "For major version upgrades (e.g., Drupal 10 to 11), additional testing and planning is required."
-    ]
+      "For major version upgrades (e.g., Drupal 10 to 11), additional testing and planning is required.",
+    ],
   },
   {
     id: "module-updates",
     title: "Module Update Procedure",
     description: "Process for safely updating Drupal modules",
     icon: <Settings className="h-5 w-5 text-green-500" />,
-    fullDescription: "This procedure outlines the recommended steps for safely updating Drupal modules. Module updates can introduce new features, fix bugs, or address security vulnerabilities.",
+    fullDescription:
+      "This procedure outlines the recommended steps for safely updating Drupal modules. Module updates can introduce new features, fix bugs, or address security vulnerabilities.",
     steps: [
       {
         title: "Review Updates",
-        description: "Review available module updates and their release notes for breaking changes."
+        description: "Review available module updates and their release notes for breaking changes.",
       },
       {
         title: "Prioritize Updates",
-        description: "Prioritize security updates over feature updates."
+        description: "Prioritize security updates over feature updates.",
       },
       {
         title: "Create Backup",
-        description: "Create a full backup of your database and codebase."
+        description: "Create a full backup of your database and codebase.",
       },
       {
         title: "Development Testing",
-        description: "Apply updates to development environment and test thoroughly."
+        description: "Apply updates to development environment and test thoroughly.",
       },
       {
         title: "Staging Deployment",
-        description: "Deploy to staging and perform user acceptance testing."
+        description: "Deploy to staging and perform user acceptance testing.",
       },
       {
         title: "Production Deployment",
-        description: "Schedule and deploy updates to production during a maintenance window."
+        description: "Schedule and deploy updates to production during a maintenance window.",
       },
       {
         title: "Verification",
-        description: "Verify functionality and monitor for any issues after deployment."
-      }
+        description: "Verify functionality and monitor for any issues after deployment.",
+      },
     ],
     notes: [
       "Consider updating one module at a time for easier troubleshooting.",
       "Always check module dependencies before updating.",
-      "Some modules may require database updates after code updates."
-    ]
+      "Some modules may require database updates after code updates.",
+    ],
   },
   {
     id: "emergency-security",
     title: "Emergency Security Updates",
     description: "Procedure for critical security patches",
     icon: <AlertCircle className="h-5 w-5 text-red-500" />,
-    fullDescription: "This procedure outlines the steps to take when a critical security vulnerability is announced and requires immediate attention. Security updates should be prioritized over regular maintenance.",
+    fullDescription:
+      "This procedure outlines the steps to take when a critical security vulnerability is announced and requires immediate attention. Security updates should be prioritized over regular maintenance.",
     steps: [
       {
         title: "Assess Impact",
-        description: "Determine if your site is vulnerable and the potential impact of the security issue."
+        description: "Determine if your site is vulnerable and the potential impact of the security issue.",
       },
       {
         title: "Create Backup",
-        description: "Create an immediate backup of all affected environments."
+        description: "Create an immediate backup of all affected environments.",
       },
       {
         title: "Apply Patch",
-        description: "Apply the security patch to development environment first, if possible."
+        description: "Apply the security patch to development environment first, if possible.",
       },
       {
         title: "Expedited Testing",
-        description: "Perform focused testing on the affected functionality."
+        description: "Perform focused testing on the affected functionality.",
       },
       {
         title: "Production Deployment",
-        description: "Deploy the security patch to production as soon as testing is complete."
+        description: "Deploy the security patch to production as soon as testing is complete.",
       },
       {
         title: "Monitor",
-        description: "Closely monitor the site for any issues after the security patch is applied."
+        description: "Closely monitor the site for any issues after the security patch is applied.",
       },
       {
         title: "Documentation",
-        description: "Document the security issue, the fix applied, and any lessons learned."
-      }
+        description: "Document the security issue, the fix applied, and any lessons learned.",
+      },
     ],
     notes: [
       "For critical vulnerabilities, it may be necessary to bypass the normal testing process.",
       "Consider temporarily taking the site offline if the vulnerability is severe and being actively exploited.",
-      "Communicate with stakeholders about the security issue and the steps being taken to address it."
-    ]
+      "Communicate with stakeholders about the security issue and the steps being taken to address it.",
+    ],
   },
   {
     id: "scheduled-maintenance",
     title: "Scheduled Maintenance Procedure",
     description: "Planning and executing maintenance windows",
     icon: <Calendar className="h-5 w-5 text-purple-500" />,
-    fullDescription: "This procedure outlines how to plan and execute scheduled maintenance windows for your Drupal sites. Proper planning minimizes disruption and ensures stakeholders are informed.",
+    fullDescription:
+      "This procedure outlines how to plan and execute scheduled maintenance windows for your Drupal sites. Proper planning minimizes disruption and ensures stakeholders are informed.",
     steps: [
       {
         title: "Identify Maintenance Needs",
-        description: "Determine what maintenance tasks need to be performed (updates, server changes, etc.)."
+        description: "Determine what maintenance tasks need to be performed (updates, server changes, etc.).",
       },
       {
         title: "Schedule Window",
-        description: "Select a maintenance window during low-traffic periods, typically early morning or late evening."
+        description: "Select a maintenance window during low-traffic periods, typically early morning or late evening.",
       },
       {
         title: "Communicate",
-        description: "Notify all stakeholders at least 48 hours in advance of the scheduled maintenance."
+        description: "Notify all stakeholders at least 48 hours in advance of the scheduled maintenance.",
       },
       {
         title: "Prepare Maintenance Page",
-        description: "Create a maintenance page that will be displayed during the downtime."
+        description: "Create a maintenance page that will be displayed during the downtime.",
       },
       {
         title: "Create Backup",
-        description: "Create a full backup before beginning maintenance activities."
+        description: "Create a full backup before beginning maintenance activities.",
       },
       {
         title: "Execute Maintenance",
-        description: "Perform the planned maintenance tasks during the scheduled window."
+        description: "Perform the planned maintenance tasks during the scheduled window.",
       },
       {
         title: "Verify",
-        description: "Test all functionality after maintenance is complete before bringing the site back online."
+        description: "Test all functionality after maintenance is complete before bringing the site back online.",
       },
       {
         title: "Post-Maintenance Communication",
-        description: "Notify stakeholders that maintenance is complete and the site is back online."
-      }
+        description: "Notify stakeholders that maintenance is complete and the site is back online.",
+      },
     ],
     notes: [
       "Always have a rollback plan in case maintenance activities don't go as planned.",
       "Consider setting up a status page for real-time updates during maintenance.",
-      "Document all changes made during the maintenance window for future reference."
-    ]
+      "Document all changes made during the maintenance window for future reference.",
+    ],
   },
   {
     id: "notification-management",
     title: "Notification Management",
     description: "Setting up and managing notifications",
     icon: <Bell className="h-5 w-5 text-yellow-500" />,
-    fullDescription: "This procedure outlines how to set up and manage notifications for various events in your Drupal hosting platform. Proper notification management ensures that the right people receive the right information at the right time.",
+    fullDescription:
+      "This procedure outlines how to set up and manage notifications for various events in your Drupal hosting platform. Proper notification management ensures that the right people receive the right information at the right time.",
     steps: [
       {
         title: "Identify Notification Types",
-        description: "Determine what types of events should trigger notifications (updates, errors, etc.)."
+        description: "Determine what types of events should trigger notifications (updates, errors, etc.).",
       },
       {
         title: "Define Audience",
-        description: "Identify who should receive each type of notification (admins, developers, content editors, etc.)."
+        description:
+          "Identify who should receive each type of notification (admins, developers, content editors, etc.).",
       },
       {
         title: "Configure Channels",
-        description: "Set up notification channels (email, Slack, in-app) in the Notification Settings."
+        description: "Set up notification channels (email, Slack, in-app) in the Notification Settings.",
       },
       {
         title: "Create Templates",
-        description: "Create notification templates for different types of events."
+        description: "Create notification templates for different types of events.",
       },
       {
         title: "Test Notifications",
-        description: "Send test notifications to ensure they are being delivered correctly."
+        description: "Send test notifications to ensure they are being delivered correctly.",
       },
       {
         title: "Implement Filtering",
-        description: "Set up filtering to prevent notification fatigue (e.g., only critical errors during off-hours)."
+        description: "Set up filtering to prevent notification fatigue (e.g., only critical errors during off-hours).",
       },
       {
         title: "Review and Adjust",
-        description: "Regularly review notification effectiveness and adjust as needed."
-      }
+        description: "Regularly review notification effectiveness and adjust as needed.",
+      },
     ],
     notes: [
       "Balance between too many and too few notifications to avoid notification fatigue.",
       "Consider using different notification channels for different priority levels.",
-      "Ensure notifications include actionable information when possible."
-    ]
+      "Ensure notifications include actionable information when possible.",
+    ],
   },
   {
     id: "user-training",
     title: "User Training Procedure",
     description: "Onboarding new users to the platform",
-    icon: <Users className="h-5 w-5 text-indigo-500" />,\
-    fullDescription: "This procedure outlines how to onboard and train new users on the Drupal hosting platform. Proper training ensures users can effectively use the platform and understand best practices for managing Drupal sites.
+    icon: <Users className="h-5 w-5 text-indigo-500" />,
+    fullDescription:
+      "This procedure outlines how to onboard and train new users on the Drupal hosting platform. Proper training ensures users can effectively use the platform and understand best practices for managing Drupal sites.",
     steps: [
       {
         title: "Identify Training Needs",
-        description: "Determine what aspects of the platform the user needs to be trained on based on their role."
+        description: "Determine what aspects of the platform the user needs to be trained on based on their role.",
       },
       {
         title: "Prepare Materials",
-        description: "Create or gather training materials, including documentation, videos, and hands-on exercises."
+        description: "Create or gather training materials, including documentation, videos, and hands-on exercises.",
       },
       {
         title: "Schedule Training",
-        description: "Schedule training sessions at a time convenient for the new user."
+        description: "Schedule training sessions at a time convenient for the new user.",
       },
       {
         title: "Platform Overview",
-        description: "Provide an overview of the platform's features and capabilities."
+        description: "Provide an overview of the platform's features and capabilities.",
       },
       {
         title: "Role-Specific Training",
-        description: "Focus on the specific features and tasks relevant to the user's role."
+        description: "Focus on the specific features and tasks relevant to the user's role.",
       },
       {
         title: "Hands-On Practice",
-        description: "Allow the user to practice using the platform in a safe, non-production environment."
+        description: "Allow the user to practice using the platform in a safe, non-production environment.",
       },
       {
         title: "Follow-Up",
-        description: "Schedule a follow-up session to address any questions or issues that arise after initial use."
-      }
+        description: "Schedule a follow-up session to address any questions or issues that arise after initial use.",
+      },
     ],
     notes: [
       "Consider creating role-based training paths for different types of users.",
       "Maintain up-to-date documentation that users can reference after training.",
-      "Collect feedback on the training process to continuously improve it."
-    ]
-  }
+      "Collect feedback on the training process to continuously improve it.",
+    ],
+  },
 ]
