@@ -634,7 +634,6 @@ const procedures = [
     description: "Onboarding new users to the platform",
     icon: <Users className="h-5 w-5 text-indigo-500" />,\
     fullDescription: "This procedure outlines how to onboard and train new users on the Drupal hosting platform. Proper training ensures users can effectively use the platform and understand best practices for managing Drupal sites.
-
     steps: [
       {
         title: "Identify Training Needs",

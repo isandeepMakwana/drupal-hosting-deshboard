@@ -683,7 +683,7 @@ const supportTickets = [
       {
         id: "1",
         author: "Support Agent",
-        avatar: "/placeholder2.jpeg?height=32&width=32",
+        avatar: "/placeholder.svg?height=32&width=32",
         text: "Thank you for reporting this issue. Could you please provide the exact error message you're seeing and the steps you're taking to deploy?",
         timestamp: "2023-06-15 15:10:22",
       },
