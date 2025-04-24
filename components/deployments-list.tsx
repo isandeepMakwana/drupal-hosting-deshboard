@@ -1,23 +1,91 @@
+"use client"
+
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { GitBranch, MoreHorizontal, RotateCcw } from "lucide-react"
-
-interface Deployment {
-  id: string
-  environment: string
-  branch: string
-  commit: string
-  deployedBy: string
-  deployedAt: string
-  status: string
-}
+import {
+  GitBranch,
+  MoreHorizontal,
+  RotateCcw,
+  ExternalLink,
+  AlertTriangle,
+  CheckCircle,
+  Copy,
+  Database,
+} from "lucide-react"
+import type { Deployment } from "@/contexts/dashboard-context"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { useDashboard } from "@/contexts/dashboard-context"
+import { useState } from "react"
+import { useToast } from "@/hooks/use-toast"
 
 interface DeploymentsListProps {
   deployments: Deployment[]
 }
 
 export function DeploymentsList({ deployments }: DeploymentsListProps) {
+  const { createBackup } = useDashboard()
+  const { toast } = useToast()
+  const [rollingBack, setRollingBack] = useState<string | null>(null)
+
+  const handleRollback = (deploymentId: string, environment: string) => {
+    setRollingBack(deploymentId)
+
+    toast({
+      title: "Rollback initiated",
+      description: `Rolling back deployment ${deploymentId}...`,
+    })
+
+    // Simulate rollback process
+    setTimeout(() => {
+      toast({
+        title: "Rollback completed",
+        description: `Successfully rolled back deployment ${deploymentId}`,
+      })
+      setRollingBack(null)
+    }, 2000)
+  }
+
+  const handleBackupBeforeRollback = (environment: string) => {
+    createBackup({
+      environment,
+      type: "Pre-rollback",
+    })
+  }
+
+  const getStatusBadgeClass = (status: string) => {
+    switch (status) {
+      case "Success":
+        return "bg-green-100 text-green-800 hover:bg-green-200"
+      case "In Progress":
+        return "bg-blue-100 text-blue-800 hover:bg-blue-200"
+      case "Failed":
+        return "bg-red-100 text-red-800 hover:bg-red-200"
+      default:
+        return ""
+    }
+  }
+
+  const getStatusIcon = (status: string) => {
+    switch (status) {
+      case "Success":
+        return <CheckCircle className="h-4 w-4 mr-1 text-green-600" />
+      case "In Progress":
+        return <GitBranch className="h-4 w-4 mr-1 text-blue-600" />
+      case "Failed":
+        return <AlertTriangle className="h-4 w-4 mr-1 text-red-600" />
+      default:
+        return null
+    }
+  }
+
   return (
     <Table>
       <TableHeader>
@@ -53,21 +121,44 @@ export function DeploymentsList({ deployments }: DeploymentsListProps) {
                       ? "secondary"
                       : "destructive"
                 }
+                className={getStatusBadgeClass(deployment.status)}
               >
+                {getStatusIcon(deployment.status)}
                 {deployment.status}
               </Badge>
             </TableCell>
             <TableCell className="text-right">
-              <div className="flex justify-end gap-2">
-                <Button variant="ghost" size="icon" title="Rollback">
-                  <RotateCcw className="h-4 w-4" />
-                  <span className="sr-only">Rollback</span>
-                </Button>
-                <Button variant="ghost" size="icon" title="More">
-                  <MoreHorizontal className="h-4 w-4" />
-                  <span className="sr-only">More</span>
-                </Button>
-              </div>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="icon">
+                    <MoreHorizontal className="h-4 w-4" />
+                    <span className="sr-only">Actions</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                  <DropdownMenuItem>
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    View Details
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Copy className="mr-2 h-4 w-4" />
+                    Copy Commit ID
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={() => handleBackupBeforeRollback(deployment.environment)}>
+                    <Database className="mr-2 h-4 w-4" />
+                    Backup Before Rollback
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => handleRollback(deployment.id, deployment.environment)}
+                    disabled={deployment.status === "In Progress" || rollingBack === deployment.id}
+                  >
+                    <RotateCcw className="mr-2 h-4 w-4" />
+                    {rollingBack === deployment.id ? "Rolling Back..." : "Rollback"}
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </TableCell>
           </TableRow>
         ))}

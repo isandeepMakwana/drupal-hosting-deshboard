@@ -12,15 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { MoreHorizontal, UserCog, UserX } from "lucide-react"
-
-interface User {
-  id: string
-  name: string
-  email: string
-  role: string
-  status: string
-  lastLogin: string
-}
+import type { User } from "@/contexts/dashboard-context"
 
 interface UsersListProps {
   users: User[]
@@ -48,15 +40,21 @@ export function UsersList({ users, onUpdateStatus, onDelete }: UsersListProps) {
             <TableCell>{user.email}</TableCell>
             <TableCell>
               <Badge
-                variant={
-                  user.role === "Administrator" ? "default" : user.role === "Developer" ? "secondary" : "outline"
+                className={
+                  user.role === "Administrator"
+                    ? "bg-red-100 text-red-800"
+                    : user.role === "Developer"
+                      ? "bg-blue-100 text-blue-800"
+                      : "bg-green-100 text-green-800"
                 }
               >
                 {user.role}
               </Badge>
             </TableCell>
             <TableCell>
-              <Badge variant={user.status === "Active" ? "default" : "secondary"}>{user.status}</Badge>
+              <Badge className={user.status === "Active" ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"}>
+                {user.status}
+              </Badge>
             </TableCell>
             <TableCell>{user.lastLogin}</TableCell>
             <TableCell className="text-right">

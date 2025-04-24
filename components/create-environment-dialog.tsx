@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { Server, Copy, Database } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -123,7 +122,9 @@ export function CreateEnvironmentDialog({ open, onOpenChange, onCreateEnvironmen
                 <SelectValue placeholder="Select version" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="10.1.2">Drupal 10.1.2 (Latest)</SelectItem>
+                <SelectItem value="11.0.0">Drupal 11.0.0 (Latest)</SelectItem>
+                <SelectItem value="10.2.0">Drupal 10.2.0</SelectItem>
+                <SelectItem value="10.1.2">Drupal 10.1.2</SelectItem>
                 <SelectItem value="10.1.0">Drupal 10.1.0</SelectItem>
                 <SelectItem value="10.0.9">Drupal 10.0.9</SelectItem>
                 <SelectItem value="9.5.11">Drupal 9.5.11</SelectItem>
@@ -136,15 +137,13 @@ export function CreateEnvironmentDialog({ open, onOpenChange, onCreateEnvironmen
             <RadioGroup value={creationMethod} onValueChange={setCreationMethod} className="col-span-3 space-y-3">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="blank" id="blank" />
-                <Label htmlFor="blank" className="font-normal flex items-center gap-2">
-                  <Server className="h-4 w-4" />
+                <Label htmlFor="blank" className="font-normal">
                   Blank Environment
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="clone" id="clone" />
-                <Label htmlFor="clone" className="font-normal flex items-center gap-2">
-                  <Copy className="h-4 w-4" />
+                <Label htmlFor="clone" className="font-normal">
                   Clone from Existing Environment
                 </Label>
               </div>
@@ -175,8 +174,7 @@ export function CreateEnvironmentDialog({ open, onOpenChange, onCreateEnvironmen
                 <div className="col-span-3 space-y-3">
                   <div className="flex items-center space-x-2">
                     <Checkbox id="content" checked={includeContent} onCheckedChange={setIncludeContent} />
-                    <Label htmlFor="content" className="font-normal flex items-center gap-2">
-                      <Database className="h-4 w-4" />
+                    <Label htmlFor="content" className="font-normal">
                       Include database content
                     </Label>
                   </div>

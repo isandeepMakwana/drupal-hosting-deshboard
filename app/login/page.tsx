@@ -47,20 +47,20 @@ export default function LoginPage() {
       setIsLoading(false)
 
       // Simple validation
-      if (email === "admin@fredonia.edu" && password === "admin") {
+      if (email === "Andrea@fredonia.edu" && password === "user") {
         try {
           // Store user info in localStorage
           localStorage.setItem(
             "user",
             JSON.stringify({
               email,
-              name: "Admin User",
+              name: "Andrea",
               role: "admin",
             }),
           )
           toast({
             title: "Login successful",
-            description: "Welcome back, Admin User!",
+            description: "Welcome back, Andrea!",
           })
           router.push("/dashboard")
         } catch (error) {
@@ -71,20 +71,20 @@ export default function LoginPage() {
             variant: "destructive",
           })
         }
-      } else if (email === "user@fredonia.edu" && password === "user") {
+      } else if (email === "Craig@fredonia.edu" && password === "user") {
         try {
           // Store user info in localStorage
           localStorage.setItem(
             "user",
             JSON.stringify({
               email,
-              name: "Regular User",
-              role: "user",
+              name: "Craig",
+              role: "developer",
             }),
           )
           toast({
             title: "Login successful",
-            description: "Welcome back, Regular User!",
+            description: "Welcome back, Craig!",
           })
           router.push("/dashboard")
         } catch (error) {
@@ -98,7 +98,7 @@ export default function LoginPage() {
       } else {
         toast({
           title: "Login failed",
-          description: "Invalid email or password. Try admin@fredonia.edu/admin or user@fredonia.edu/user",
+          description: "Invalid email or password. Please try again.",
           variant: "destructive",
         })
       }
@@ -136,7 +136,7 @@ export default function LoginPage() {
               <Input
                 id="email"
                 type="email"
-                placeholder="admin@fredonia.edu"
+                placeholder="Andrea@fredonia.edu"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -156,11 +156,6 @@ export default function LoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-            </div>
-            <div className="text-xs text-muted-foreground">
-              <p>Demo credentials:</p>
-              <p>Admin: admin@fredonia.edu / admin</p>
-              <p>User: user@fredonia.edu / user</p>
             </div>
           </CardContent>
           <CardFooter>

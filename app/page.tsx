@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="bg-white border-b sticky top-0 z-10">
-        <div className="container flex h-16 items-center justify-between px-4 md:px-6">
+        <div className="container flex h-16 items-center justify-between px-4 md:px-6 mx-auto">
           <div className="flex items-center gap-2">
             <Server className="h-6 w-6 text-blue-600" />
             <span className="text-xl font-bold">Drupal Cloud</span>
@@ -20,9 +20,6 @@ export default function Home() {
             </Link>
             <Link href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground">
               Features
-            </Link>
-            <Link href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-              Pricing
             </Link>
             <Link href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground">
               Contact
@@ -37,7 +34,7 @@ export default function Home() {
       </header>
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-blue-50 to-white">
-          <div className="container px-4 md:px-6">
+          <div className="container px-4 md:px-6 mx-auto">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="space-y-4">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
@@ -63,7 +60,7 @@ export default function Home() {
               </div>
               <div className="mx-auto lg:mx-0 lg:flex-1">
                 <img
-                  src="/placeholder.svg?height=550&width=700"
+                  src="/placeholder2.jpeg?height=550&width=700"
                   alt="Dashboard Preview"
                   className="rounded-lg object-cover border shadow-lg"
                   width={700}
@@ -74,7 +71,7 @@ export default function Home() {
           </div>
         </section>
         <section id="features" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
+          <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-blue-100 px-3 py-1 text-sm text-blue-700">Features</div>
@@ -114,53 +111,8 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="pricing" className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-blue-100 px-3 py-1 text-sm text-blue-700">Pricing</div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Simple, Transparent Pricing</h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Choose the plan that fits your needs
-                </p>
-              </div>
-            </div>
-            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3 mt-12">
-              {pricingPlans.map((plan) => (
-                <Card key={plan.name} className={`flex flex-col ${plan.featured ? "border-blue-500 shadow-lg" : ""}`}>
-                  {plan.featured && (
-                    <div className="bg-blue-500 text-white text-center py-2 font-medium">Recommended</div>
-                  )}
-                  <CardHeader>
-                    <CardTitle>{plan.name}</CardTitle>
-                    <CardDescription>{plan.description}</CardDescription>
-                    <div className="mt-4">
-                      <span className="text-3xl font-bold">${plan.price}</span>
-                      <span className="text-muted-foreground">/month</span>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="flex-1">
-                    <ul className="space-y-2">
-                      {plan.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-2">
-                          <CheckCircle className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                  <CardFooter>
-                    <Button variant={plan.featured ? "default" : "outline"} className="w-full">
-                      Get Started
-                    </Button>
-                  </CardFooter>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
         <section id="contact" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
+          <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-blue-100 px-3 py-1 text-sm text-blue-700">Contact</div>
@@ -218,7 +170,7 @@ export default function Home() {
         </section>
       </main>
       <footer className="border-t bg-gray-50">
-        <div className="container flex flex-col gap-4 py-10 md:flex-row md:gap-8 md:py-12">
+        <div className="container flex flex-col gap-4 py-10 md:flex-row md:gap-8 md:py-12 mx-auto">
           <div className="flex flex-col gap-2 md:gap-4 md:flex-1">
             <div className="flex items-center gap-2">
               <Server className="h-5 w-5 text-blue-600" />
@@ -233,11 +185,6 @@ export default function Home() {
                 <li>
                   <Link href="#features" className="text-muted-foreground hover:text-foreground">
                     Features
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#pricing" className="text-muted-foreground hover:text-foreground">
-                    Pricing
                   </Link>
                 </li>
                 <li>
@@ -289,7 +236,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="container py-6 text-center text-sm text-muted-foreground border-t">
+        <div className="container py-6 text-center text-sm text-muted-foreground border-t mx-auto">
           &copy; {new Date().getFullYear()} Drupal Cloud. All rights reserved.
         </div>
       </footer>
@@ -354,51 +301,5 @@ const features = [
     icon: Server,
     benefits: ["Automated SSL provisioning", "Custom domain management", "DNS management", "Redirect configuration"],
     link: "/dashboard/domains",
-  },
-]
-
-const pricingPlans = [
-  {
-    name: "Basic",
-    description: "For small departmental sites",
-    price: 99,
-    features: [
-      "1 Production Environment",
-      "1 Staging Environment",
-      "Daily Backups",
-      "Basic Monitoring",
-      "Email Support",
-    ],
-    featured: false,
-  },
-  {
-    name: "Professional",
-    description: "For mission-critical websites",
-    price: 299,
-    features: [
-      "3 Production Environments",
-      "3 Staging Environments",
-      "Hourly Backups",
-      "Advanced Monitoring",
-      "Priority Support",
-      "Custom Domains",
-      "CDN Integration",
-    ],
-    featured: true,
-  },
-  {
-    name: "Enterprise",
-    description: "For complex multi-site deployments",
-    price: 599,
-    features: [
-      "Unlimited Environments",
-      "Continuous Backups",
-      "Enterprise SLA",
-      "24/7 Phone Support",
-      "Custom Integrations",
-      "Advanced Security",
-      "Dedicated Resources",
-    ],
-    featured: false,
   },
 ]

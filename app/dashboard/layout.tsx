@@ -6,7 +6,6 @@ import type React from "react"
 import { SidebarNav } from "@/components/sidebar-nav"
 import { MainNav } from "@/components/main-nav"
 import { UserNav } from "@/components/user-nav"
-import { Toaster } from "@/components/ui/toaster"
 
 export default function DashboardLayout({
   children,
@@ -90,7 +89,6 @@ export default function DashboardLayout({
           <div className="flex-1">{children}</div>
         </div>
       </div>
-      <Toaster />
     </div>
   )
 }

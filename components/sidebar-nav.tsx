@@ -2,7 +2,19 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { BarChart, Cloud, Database, GitBranch, Globe, Home, RefreshCw, Server, Settings, Shield } from "lucide-react"
+import {
+  BarChart,
+  Cloud,
+  Database,
+  GitBranch,
+  Globe,
+  Home,
+  HelpCircle,
+  RefreshCw,
+  Server,
+  Settings,
+  Shield,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function SidebarNav() {
@@ -68,6 +80,12 @@ export function SidebarNav() {
         <Button variant={pathname === "/dashboard/cache" ? "secondary" : "ghost"} className="w-full justify-start">
           <Cloud className="mr-2 h-4 w-4" />
           Cache Management
+        </Button>
+      </Link>
+      <Link href="/dashboard/support">
+        <Button variant={pathname === "/dashboard/support" ? "secondary" : "ghost"} className="w-full justify-start">
+          <HelpCircle className="mr-2 h-4 w-4" />
+          Live Support
         </Button>
       </Link>
       <Link href="/dashboard/settings">

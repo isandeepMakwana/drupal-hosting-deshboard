@@ -3,18 +3,8 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { ArrowUpCircle, CheckCircle, Clock, Loader2 } from "lucide-react"
-
-interface Update {
-  id: string
-  name: string
-  type: string
-  currentVersion: string
-  newVersion: string
-  affectedSites: string
-  security: boolean
-  status: string
-}
+import { ArrowUpCircle, Clock, Loader2 } from "lucide-react"
+import type { Update } from "@/contexts/dashboard-context"
 
 interface UpdatesListProps {
   updates: Update[]
@@ -47,20 +37,30 @@ export function UpdatesList({ updates, onUpdateNow, onScheduleUpdate }: UpdatesL
             <TableCell>{update.affectedSites}</TableCell>
             <TableCell>
               {update.security ? (
-                <Badge variant="destructive">Security</Badge>
+                <Badge className="bg-red-100 text-red-800 hover:bg-red-200">Security</Badge>
               ) : (
-                <Badge variant="outline">Feature</Badge>
+                <Badge variant="outline" className="bg-blue-100 text-blue-800 hover:bg-blue-200">
+                  Feature
+                </Badge>
               )}
             </TableCell>
             <TableCell>
               {update.status === "available" ? (
-                <Badge variant="outline">Available</Badge>
+                <Badge variant="outline" className="bg-blue-100 text-blue-800">
+                  Available
+                </Badge>
               ) : update.status === "in-progress" ? (
-                <Badge variant="secondary">In Progress</Badge>
+                <Badge variant="secondary" className="bg-yellow-100 text-yellow-800">
+                  In Progress
+                </Badge>
               ) : update.status === "scheduled" ? (
-                <Badge variant="secondary">Scheduled</Badge>
+                <Badge variant="secondary" className="bg-purple-100 text-purple-800">
+                  Scheduled
+                </Badge>
               ) : (
-                <Badge variant="default">Completed</Badge>
+                <Badge variant="default" className="bg-green-100 text-green-800">
+                  Completed
+                </Badge>
               )}
             </TableCell>
             <TableCell className="text-right">
@@ -94,7 +94,6 @@ export function UpdatesList({ updates, onUpdateNow, onScheduleUpdate }: UpdatesL
 
                 {update.status === "completed" && (
                   <Button variant="outline" size="sm" className="h-8" disabled>
-                    <CheckCircle className="mr-2 h-4 w-4" />
                     Completed
                   </Button>
                 )}

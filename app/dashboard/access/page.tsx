@@ -7,97 +7,11 @@ import { DashboardHeader } from "@/components/dashboard-header"
 import { DashboardShell } from "@/components/dashboard-shell"
 import { UsersList } from "@/components/users-list"
 import { AddUserDialog } from "@/components/add-user-dialog"
-import { useToast } from "@/hooks/use-toast"
+import { useDashboard } from "@/contexts/dashboard-context"
 
 export default function AccessControlPage() {
-  const { toast } = useToast()
   const [isDialogOpen, setIsDialogOpen] = useState(false)
-  const [users, setUsers] = useState([
-    {
-      id: "1",
-      name: "Admin User",
-      email: "admin@fredonia.edu",
-      role: "Administrator",
-      status: "Active",
-      lastLogin: "2 hours ago",
-    },
-    {
-      id: "2",
-      name: "Jane Smith",
-      email: "jane.smith@fredonia.edu",
-      role: "Developer",
-      status: "Active",
-      lastLogin: "1 day ago",
-    },
-    {
-      id: "3",
-      name: "John Doe",
-      email: "john.doe@fredonia.edu",
-      role: "Content Editor",
-      status: "Active",
-      lastLogin: "3 days ago",
-    },
-    {
-      id: "4",
-      name: "Sarah Johnson",
-      email: "sarah.johnson@fredonia.edu",
-      role: "Developer",
-      status: "Active",
-      lastLogin: "5 days ago",
-    },
-    {
-      id: "5",
-      name: "Michael Brown",
-      email: "michael.brown@fredonia.edu",
-      role: "Content Editor",
-      status: "Inactive",
-      lastLogin: "2 months ago",
-    },
-  ])
-
-  const handleAddUser = (userData: any) => {
-    // Generate a random ID
-    const id = `${users.length + 1}`
-
-    // Add new user to the list
-    const newUser = {
-      id,
-      name: userData.name,
-      email: userData.email,
-      role: userData.role,
-      status: "Active",
-      lastLogin: "Never",
-    }
-
-    setUsers([...users, newUser])
-
-    toast({
-      title: "User added",
-      description: `${userData.name} has been added as a ${userData.role}`,
-    })
-  }
-
-  const handleUpdateUserStatus = (userId: string, newStatus: string) => {
-    setUsers(users.map((user) => (user.id === userId ? { ...user, status: newStatus } : user)))
-
-    const user = users.find((u) => u.id === userId)
-
-    toast({
-      title: `User ${newStatus.toLowerCase()}`,
-      description: `${user?.name} has been ${newStatus.toLowerCase()}`,
-    })
-  }
-
-  const handleDeleteUser = (userId: string) => {
-    const user = users.find((u) => u.id === userId)
-
-    setUsers(users.filter((user) => user.id !== userId))
-
-    toast({
-      title: "User deleted",
-      description: `${user?.name} has been removed`,
-    })
-  }
+  const { users, addUser, updateUserStatus, deleteUser } = useDashboard()
 
   // Count users by role
   const adminCount = users.filter((u) => u.role === "Administrator").length
@@ -154,11 +68,11 @@ export default function AccessControlPage() {
           <CardDescription>Manage users and their permissions</CardDescription>
         </CardHeader>
         <CardContent>
-          <UsersList users={users} onUpdateStatus={handleUpdateUserStatus} onDelete={handleDeleteUser} />
+          <UsersList users={users} onUpdateStatus={updateUserStatus} onDelete={deleteUser} />
         </CardContent>
       </Card>
 
-      <AddUserDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} onAddUser={handleAddUser} />
+      <AddUserDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} onAddUser={addUser} />
     </DashboardShell>
   )
 }
